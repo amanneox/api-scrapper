@@ -1,0 +1,20 @@
+{
+  "name": "api-scrapper-service",
+  "version": "1.0.0",
+  "description": "Serverless REST API with MongoDB using Mongoose and Bluebird",
+  "main": "handler.js",
+  "scripts": {
+  "start": "sls run",
+  "bump": "npm version --no-git-tag-version prerelease",
+  "invoke": "sls invoke -f",
+  "deploy": "npm bump && sls deploy -v",
+  "remove": "sls remove"
+},
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "mongoose": "^4.9.6",
+    "validator": "^7.0.0"
+  },
+  "author": "aman adhikari <amanadhikari2@gmail.com>",
+  "license": "MIT"
+}
