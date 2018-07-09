@@ -33,10 +33,7 @@ module.exports.getCity = (event, context, callback) => {
     city_ids:data.cityID, //comma separated city_ids value
     count:data.count // number of maximum result to display
   }
-  if (request.validateSync()) {
-    callback(null, createErrorResponse(400, 'Incorrect data'));
-    return;
-  }
+
   client.getCities(request, function(err, result){
     if (err) {
     callback(null, { statusCode: 200, body: err })
@@ -54,10 +51,7 @@ module.exports.getCuisines = (event, context, callback) => {
     lon:data.lon, //longitude
     city_id:data.cityID, //comma separated city_ids value
   }
-  if (request.validateSync()) {
-    callback(null, createErrorResponse(400, 'Incorrect data'));
-    return;
-  }
+
   client.getCuisines(request, function(err, result){
     if (err) {
     callback(null, { statusCode: 200, body: err })
@@ -76,10 +70,7 @@ module.exports.getEstablishments = (event, context, callback) => {
     lon:data.lon, //longitude
     city_id:data.cityID, //comma separated city_ids value
   }
-  if (request.validateSync()) {
-    callback(null, createErrorResponse(400, 'Incorrect data'));
-    return;
-  }
+
   client.getEstablishments(request, function(err, result){
     if (err) {
     callback(null, { statusCode: 200, body: err })
@@ -97,10 +88,7 @@ module.exports.getGeocode = (event, context, callback) => {
     lat:data.lat, //latitude
     lon:data.lon, //longitude
   }
-  if (request.validateSync()) {
-    callback(null, createErrorResponse(400, 'Incorrect data'));
-    return;
-  }
+
   client.getGeocode(request, function(err, result){
     if (err) {
     callback(null, { statusCode: 200, body: err })
@@ -112,6 +100,25 @@ module.exports.getGeocode = (event, context, callback) => {
   })
 }
 
+module.exports.getCollections = (event, context, callback) => {
+  const data = JSON.parse(event.body)
+  const request = {
+    city_id: data.cityID,
+    count: data.count,
+    lat:data.lat, //latitude
+    lon:data.lon, //longitude
+  }
+
+  client.getCollections(request, function(err, result){
+    if (err) {
+    callback(null, { statusCode: 200, body: err })
+    }
+    else {
+    callback(null, { statusCode: 200, body: result })
+    }
+
+  })
+}
 
 module.exports.getLocations = (event, context, callback) => {
   const data = JSON.parse(event.body)
@@ -121,10 +128,7 @@ module.exports.getLocations = (event, context, callback) => {
     lat:data.lat, //latitude
     lon:data.lon, //longitude
   }
-  if (request.validateSync()) {
-    callback(null, createErrorResponse(400, 'Incorrect data'));
-    return;
-  }
+
   client.getLocations(request, function(err, result){
     if (err) {
     callback(null, { statusCode: 200, body: err })
@@ -142,10 +146,7 @@ module.exports.getLocationDetails = (event, context, callback) => {
     entity_id:data.entityID, //location id obtained from locations api
     entity_type:data.group //location type obtained from locations api
   }
-  if (request.validateSync()) {
-    callback(null, createErrorResponse(400, 'Incorrect data'));
-    return;
-  }
+
   client.getLocationDetails(request, function(err, result){
     if (err) {
     callback(null, { statusCode: 200, body: err })
@@ -162,10 +163,8 @@ module.exports.getDailyMenu = (event, context, callback) => {
   const request = {
     res_id: data.resID
   }
-  if (request.validateSync()) {
-    callback(null, createErrorResponse(400, 'Incorrect data'));
-    return;
-  }
+  console.log(request)
+try {
   client.getDailyMenu(request, function(err, result){
     if (err) {
     callback(null, { statusCode: 200, body: err })
@@ -175,6 +174,10 @@ module.exports.getDailyMenu = (event, context, callback) => {
     }
 
   })
+} catch (e) {
+  console.log(e)
+}
+
 }
 
 module.exports.getRestaurant = (event, context, callback) => {
@@ -182,10 +185,7 @@ module.exports.getRestaurant = (event, context, callback) => {
   const request = {
     res_id: data.resID
   }
-  if (request.validateSync()) {
-    callback(null, createErrorResponse(400, 'Incorrect data'));
-    return;
-  }
+
   client.getRestaurant(request, function(err, result){
     if (err) {
     callback(null, { statusCode: 200, body: err })
@@ -203,10 +203,6 @@ module.exports.getReviews = (event, context, callback) => {
     res_id: data.resID,
     start : data.start , //fetch results after this offset (Integer)
     count: data.count,// max number of results to retrieve
-  }
-  if (request.validateSync()) {
-    callback(null, createErrorResponse(400, 'Incorrect data'));
-    return;
   }
   client.getReviews(request, function(err, result){
     if (err) {
@@ -237,10 +233,7 @@ module.exports.zomatoSearch = (event, context, callback) => {
     sort : data.sort ,//choose any one out of these available choices
     order: data.order //	used with 'sort' parameter to define ascending(asc )/ descending(desc)
   }
-  if (request.validateSync()) {
-    callback(null, createErrorResponse(400, 'Incorrect data'));
-    return;
-  }
+
   client.zomatoSearch(request, function(err, result){
     if (err) {
     callback(null, { statusCode: 200, body: err })

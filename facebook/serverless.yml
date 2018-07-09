@@ -1,8 +1,11 @@
-service: aws-node-rest-api-mongodb
-
+service: api-scrapper-fb-service
+app: api-scrapper
+tenant: amanneox
 provider:
   name: aws
-  runtime: nodejs6.10
+  stage: dev
+  region: ap-south-1
+  runtime: nodejs8.10
 
 functions:
   createUser:
