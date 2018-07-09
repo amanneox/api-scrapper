@@ -12,7 +12,7 @@ const createClient = (credentials) => {
 	getDailyMenu:query(credentials,'getDailyMenu'),
 	getRestaurant:query(credentials,'getRestaurant'),
 	getReviews:query(credentials,'getReviews'),
-	search:query(credentials,'getReviews')
+	search:query(credentials,'search')
   }
 }
 const query = (credentials, method) => {

@@ -144,7 +144,7 @@ module.exports.getLocationDetails = (event, context, callback) => {
   const data = JSON.parse(event.body)
   const request = {
     entity_id:data.entityID, //location id obtained from locations api
-    entity_type:data.group //location type obtained from locations api
+    entity_type:data.entityType //location type obtained from locations api
   }
 
   client.getLocationDetails(request, function(err, result){
@@ -159,23 +159,23 @@ module.exports.getLocationDetails = (event, context, callback) => {
 }
 
 module.exports.getDailyMenu = (event, context, callback) => {
+  try {
   const data = JSON.parse(event.body)
   const request = {
-    res_id: data.resID
+    res_id:data.resID,
   }
-  console.log(request)
-try {
   client.getDailyMenu(request, function(err, result){
+    console.log(request)
     if (err) {
-    callback(null, { statusCode: 200, body: err })
+    callback(null, { statusCode: 400, body: err })
     }
     else {
     callback(null, { statusCode: 200, body: result })
     }
-
   })
 } catch (e) {
   console.log(e)
+  callback(null, { statusCode: 500, body: e })
 }
 
 }
