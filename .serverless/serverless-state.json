@@ -43,6 +43,18 @@
               "LogGroupName": "/aws/lambda/api-scrapper-service-dev-user"
             }
           },
+          "ZomatoDashgetCategoriesLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/api-scrapper-service-dev-zomato-getCategories"
+            }
+          },
+          "ZomatoDashgetCityLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/api-scrapper-service-dev-zomato-getCity"
+            }
+          },
           "IamRoleLambdaExecution": {
             "Type": "AWS::IAM::Role",
             "Properties": {
@@ -94,6 +106,12 @@
                           },
                           {
                             "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/api-scrapper-service-dev-user:*"
+                          },
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/api-scrapper-service-dev-zomato-getCategories:*"
+                          },
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/api-scrapper-service-dev-zomato-getCity:*"
                           }
                         ]
                       },
@@ -114,6 +132,12 @@
                           },
                           {
                             "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/api-scrapper-service-dev-user:*:*"
+                          },
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/api-scrapper-service-dev-zomato-getCategories:*:*"
+                          },
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/api-scrapper-service-dev-zomato-getCity:*:*"
                           }
                         ]
                       }
@@ -142,7 +166,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/api-scrapper-service/dev/1531131643600-2018-07-09T10:20:43.600Z/api-scrapper-service.zip"
+                "S3Key": "serverless/api-scrapper-service/dev/1531133153103-2018-07-09T10:45:53.103Z/api-scrapper-service.zip"
               },
               "FunctionName": "api-scrapper-service-dev-createUser",
               "Handler": "handler.createUser",
@@ -161,14 +185,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "CreateUserLambdaVersionQEpcCpcQOnUrCzOaysdqz4Tyyw0dBneVqBD0C0mg": {
+          "CreateUserLambdaVersion5rzQ0XfsPGyrRIGfrP79VCMeQqrVdAUY1cHLbqLyNw": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateUserLambdaFunction"
               },
-              "CodeSha256": "GHbmCatQ74cxQkXe2ZgxDvxItIfo0QZv8TFPXMkqUCQ="
+              "CodeSha256": "PCd7crLmmXcicsfpmbrA+IaiBz9Kc3cNDEgNXRL5Oro="
             }
           },
           "UpdateUserLambdaFunction": {
@@ -178,7 +202,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/api-scrapper-service/dev/1531131643600-2018-07-09T10:20:43.600Z/api-scrapper-service.zip"
+                "S3Key": "serverless/api-scrapper-service/dev/1531133153103-2018-07-09T10:45:53.103Z/api-scrapper-service.zip"
               },
               "FunctionName": "api-scrapper-service-dev-updateUser",
               "Handler": "handler.updateUser",
@@ -197,14 +221,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "UpdateUserLambdaVersionhvu5K0PPtgnbUZOVx1VmvV7qtbPqwDyHfqVGsw2VM": {
+          "UpdateUserLambdaVersionsfp7lCI7DNsbU624IWQU2x7LNzBvVHny7O6q7PsKxao": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UpdateUserLambdaFunction"
               },
-              "CodeSha256": "GHbmCatQ74cxQkXe2ZgxDvxItIfo0QZv8TFPXMkqUCQ="
+              "CodeSha256": "PCd7crLmmXcicsfpmbrA+IaiBz9Kc3cNDEgNXRL5Oro="
             }
           },
           "DeleteUserLambdaFunction": {
@@ -214,7 +238,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/api-scrapper-service/dev/1531131643600-2018-07-09T10:20:43.600Z/api-scrapper-service.zip"
+                "S3Key": "serverless/api-scrapper-service/dev/1531133153103-2018-07-09T10:45:53.103Z/api-scrapper-service.zip"
               },
               "FunctionName": "api-scrapper-service-dev-deleteUser",
               "Handler": "handler.deleteUser",
@@ -233,14 +257,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "DeleteUserLambdaVersionZ5o2wD6LZUXRV6vwaOK1JLeNGkkAYnsOGng9habFKY": {
+          "DeleteUserLambdaVersionPLrLQIBipyoWs81yW5K8fF2M4xRnLgqAHl9uSElTpzM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "DeleteUserLambdaFunction"
               },
-              "CodeSha256": "GHbmCatQ74cxQkXe2ZgxDvxItIfo0QZv8TFPXMkqUCQ="
+              "CodeSha256": "PCd7crLmmXcicsfpmbrA+IaiBz9Kc3cNDEgNXRL5Oro="
             }
           },
           "UserLambdaFunction": {
@@ -250,7 +274,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/api-scrapper-service/dev/1531131643600-2018-07-09T10:20:43.600Z/api-scrapper-service.zip"
+                "S3Key": "serverless/api-scrapper-service/dev/1531133153103-2018-07-09T10:45:53.103Z/api-scrapper-service.zip"
               },
               "FunctionName": "api-scrapper-service-dev-user",
               "Handler": "handler.user",
@@ -269,14 +293,86 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "UserLambdaVersionOCp4o3WAt9KGZn1A5XyHN7gpx0JQgIZYNjJbzSAN8tQ": {
+          "UserLambdaVersionSAqWoVcJY4qOOOkmWGabhE2eMbLT9fdoYyyuHzack": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UserLambdaFunction"
               },
-              "CodeSha256": "GHbmCatQ74cxQkXe2ZgxDvxItIfo0QZv8TFPXMkqUCQ="
+              "CodeSha256": "PCd7crLmmXcicsfpmbrA+IaiBz9Kc3cNDEgNXRL5Oro="
+            }
+          },
+          "ZomatoDashgetCategoriesLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/api-scrapper-service/dev/1531133153103-2018-07-09T10:45:53.103Z/api-scrapper-service.zip"
+              },
+              "FunctionName": "api-scrapper-service-dev-zomato-getCategories",
+              "Handler": "handlers/zomato/extract.getCategories",
+              "MemorySize": 1024,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              },
+              "Runtime": "nodejs8.10",
+              "Timeout": 6
+            },
+            "DependsOn": [
+              "ZomatoDashgetCategoriesLogGroup",
+              "IamRoleLambdaExecution"
+            ]
+          },
+          "ZomatoDashgetCategoriesLambdaVersiondabOEghgp6SWyv5OyLImVjVcUr7jcrcLuLemjHc3f4": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "ZomatoDashgetCategoriesLambdaFunction"
+              },
+              "CodeSha256": "PCd7crLmmXcicsfpmbrA+IaiBz9Kc3cNDEgNXRL5Oro="
+            }
+          },
+          "ZomatoDashgetCityLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/api-scrapper-service/dev/1531133153103-2018-07-09T10:45:53.103Z/api-scrapper-service.zip"
+              },
+              "FunctionName": "api-scrapper-service-dev-zomato-getCity",
+              "Handler": "handlers/zomato/extract.getCity",
+              "MemorySize": 1024,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              },
+              "Runtime": "nodejs8.10",
+              "Timeout": 6
+            },
+            "DependsOn": [
+              "ZomatoDashgetCityLogGroup",
+              "IamRoleLambdaExecution"
+            ]
+          },
+          "ZomatoDashgetCityLambdaVersionrYvFB4axVRyG4G1FRqgIWtbYx2z0GfKsP9kkQxTE": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "ZomatoDashgetCityLambdaFunction"
+              },
+              "CodeSha256": "PCd7crLmmXcicsfpmbrA+IaiBz9Kc3cNDEgNXRL5Oro="
             }
           },
           "ApiGatewayRestApi": {
@@ -312,6 +408,45 @@
                 "Ref": "ApiGatewayResourceUser"
               },
               "PathPart": "{id}",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceZomato": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Fn::GetAtt": [
+                  "ApiGatewayRestApi",
+                  "RootResourceId"
+                ]
+              },
+              "PathPart": "zomato",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceZomatoGetcategories": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Ref": "ApiGatewayResourceZomato"
+              },
+              "PathPart": "getCategories",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceZomatoGetcity": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Ref": "ApiGatewayResourceZomato"
+              },
+              "PathPart": "getCity",
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
@@ -405,6 +540,100 @@
               },
               "ResourceId": {
                 "Ref": "ApiGatewayResourceUserIdVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodZomatoGetcategoriesOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true,
+                    "method.response.header.Access-Control-Allow-Credentials": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'",
+                      "method.response.header.Access-Control-Allow-Credentials": "'false'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceZomatoGetcategories"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodZomatoGetcityOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true,
+                    "method.response.header.Access-Control-Allow-Credentials": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'",
+                      "method.response.header.Access-Control-Allow-Credentials": "'false'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceZomatoGetcity"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -583,7 +812,93 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1531131643724": {
+          "ApiGatewayMethodZomatoGetcategoriesGet": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceZomatoGetcategories"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "ZomatoDashgetCategoriesLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            }
+          },
+          "ApiGatewayMethodZomatoGetcityPost": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "POST",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceZomatoGetcity"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "ZomatoDashgetCityLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            }
+          },
+          "ApiGatewayDeployment1531133153292": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -595,7 +910,9 @@
               "ApiGatewayMethodUserPost",
               "ApiGatewayMethodUserIdVarPut",
               "ApiGatewayMethodUserIdVarDelete",
-              "ApiGatewayMethodUserIdVarGet"
+              "ApiGatewayMethodUserIdVarGet",
+              "ApiGatewayMethodZomatoGetcategoriesGet",
+              "ApiGatewayMethodZomatoGetcityPost"
             ]
           },
           "CreateUserLambdaPermissionApiGateway": {
@@ -785,6 +1102,100 @@
                 ]
               }
             }
+          },
+          "ZomatoDashgetCategoriesLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "ZomatoDashgetCategoriesLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "apigateway.",
+                    {
+                      "Ref": "AWS::URLSuffix"
+                    }
+                  ]
+                ]
+              },
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "ZomatoDashgetCityLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "ZomatoDashgetCityLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "apigateway.",
+                    {
+                      "Ref": "AWS::URLSuffix"
+                    }
+                  ]
+                ]
+              },
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
           }
         },
         "Outputs": {
@@ -796,25 +1207,37 @@
           "CreateUserLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateUserLambdaVersionQEpcCpcQOnUrCzOaysdqz4Tyyw0dBneVqBD0C0mg"
+              "Ref": "CreateUserLambdaVersion5rzQ0XfsPGyrRIGfrP79VCMeQqrVdAUY1cHLbqLyNw"
             }
           },
           "UpdateUserLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateUserLambdaVersionhvu5K0PPtgnbUZOVx1VmvV7qtbPqwDyHfqVGsw2VM"
+              "Ref": "UpdateUserLambdaVersionsfp7lCI7DNsbU624IWQU2x7LNzBvVHny7O6q7PsKxao"
             }
           },
           "DeleteUserLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "DeleteUserLambdaVersionZ5o2wD6LZUXRV6vwaOK1JLeNGkkAYnsOGng9habFKY"
+              "Ref": "DeleteUserLambdaVersionPLrLQIBipyoWs81yW5K8fF2M4xRnLgqAHl9uSElTpzM"
             }
           },
           "UserLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UserLambdaVersionOCp4o3WAt9KGZn1A5XyHN7gpx0JQgIZYNjJbzSAN8tQ"
+              "Ref": "UserLambdaVersionSAqWoVcJY4qOOOkmWGabhE2eMbLT9fdoYyyuHzack"
+            }
+          },
+          "ZomatoDashgetCategoriesLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "ZomatoDashgetCategoriesLambdaVersiondabOEghgp6SWyv5OyLImVjVcUr7jcrcLuLemjHc3f4"
+            }
+          },
+          "ZomatoDashgetCityLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "ZomatoDashgetCityLambdaVersionrYvFB4axVRyG4G1FRqgIWtbYx2z0GfKsP9kkQxTE"
             }
           },
           "ServiceEndpoint": {
@@ -1005,6 +1428,80 @@
         "timeout": 6,
         "runtime": "nodejs8.10",
         "vpc": {}
+      },
+      "zomato-getCategories": {
+        "handler": "handlers/zomato/extract.getCategories",
+        "events": [
+          {
+            "http": {
+              "path": "zomato/getCategories",
+              "method": "get",
+              "cors": {
+                "origins": [
+                  "*"
+                ],
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "GET"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "api-scrapper-service-dev-zomato-getCategories",
+        "package": {},
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs8.10",
+        "vpc": {}
+      },
+      "zomato-getCity": {
+        "handler": "handlers/zomato/extract.getCity",
+        "events": [
+          {
+            "http": {
+              "path": "zomato/getCity",
+              "method": "post",
+              "cors": {
+                "origins": [
+                  "*"
+                ],
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "POST"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "api-scrapper-service-dev-zomato-getCity",
+        "package": {},
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs8.10",
+        "vpc": {}
       }
     },
     "app": "api-scrapper",
@@ -1012,7 +1509,7 @@
     "artifact": "/home/amanneox/api-scrapper/.serverless/api-scrapper-service.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/api-scrapper-service/dev/1531131643600-2018-07-09T10:20:43.600Z",
+    "artifactDirectoryName": "serverless/api-scrapper-service/dev/1531133153103-2018-07-09T10:45:53.103Z",
     "artifact": "api-scrapper-service.zip"
   }
 }
