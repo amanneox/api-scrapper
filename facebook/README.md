@@ -1,6 +1,6 @@
 # Serverless MongoDB Rest API with Mongoose and Bluebird Promises
 
-This example demonstrate how to use a MongoDB database with aws and serverless.
+Facebook user data scraping of users logged into app.
 
 Using Mongoose ODM and Bluebird for Promises.
 
@@ -17,7 +17,7 @@ serverless deploy
 
 ## Usage
 
-In `handler.js` update the `mongoString` with your mongoDB url.
+In `handlres/users.js` update the `mongoString` with your mongoDB url.
 
 *Create*
 

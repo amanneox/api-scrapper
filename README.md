@@ -1,6 +1,6 @@
 # Serverless MongoDB Rest API with Mongoose and Bluebird Promises
 
-This example demonstrate how to use a MongoDB database with aws and serverless.
+API-Scrapper, scraps data from Zomato and Facebook,  MongoDB database with aws and serverless.
 
 Using Mongoose ODM and Bluebird for Promises.
 
