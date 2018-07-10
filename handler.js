@@ -5,7 +5,7 @@ const UserModel = require('./model/User.js');
 
 mongoose.Promise = Promise;
 
-const mongoString = 'mongodb://amanneox:amanneox@scrapper-dev-shard-00-00-i8ugf.mongodb.net:27017,scrapper-dev-shard-00-01-i8ugf.mongodb.net:27017,scrapper-dev-shard-00-02-i8ugf.mongodb.net:27017/test?ssl=true&replicaSet=scrapper-dev-shard-0&authSource=admin&retryWrites=true'; 
+const mongoString = 'mongodb://amanneox:amanneox@scrapper-dev-shard-00-00-i8ugf.mongodb.net:27017,scrapper-dev-shard-00-01-i8ugf.mongodb.net:27017,scrapper-dev-shard-00-02-i8ugf.mongodb.net:27017/test?ssl=true&replicaSet=scrapper-dev-shard-0&authSource=admin&retryWrites=true';
 const createErrorResponse = (statusCode, message) => ({
   statusCode: statusCode || 501,
   headers: { 'Content-Type': 'text/plain' },
@@ -41,7 +41,6 @@ module.exports.createUser = (event, context, callback) => {
     firstname: data.firstname,
     birth: data.birth,
     city: data.city,
-    ip: event.requestContext.identity.sourceIp,
   });
 
   if (user.validateSync()) {
@@ -89,7 +88,6 @@ module.exports.updateUser = (event, context, callback) => {
     firstname: data.firstname,
     birth: data.birth,
     city: data.city,
-    ip: event.requestContext.identity.sourceIp,
   });
 
   if (user.validateSync()) {

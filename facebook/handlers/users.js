@@ -1,27 +1,27 @@
-const mongoose = require('mongoose');
-const Promise = require('bluebird');
-const validator = require('validator');
-const UserModel = require('./model/User.js');
-
+const mongoose = require('mongoose')
+const Promise = require('bluebird')
+const validator = require('validator')
+const UserModel = require('../model/User.js')
+require('dotenv').config()
 mongoose.Promise = Promise;
 
-const mongoString = ''; // MongoDB Url
-
+const mongoString = process.env.MONGO_URI // Change this to your own MONGO_URI
+console.log(mongoString)
 const createErrorResponse = (statusCode, message) => ({
   statusCode: statusCode || 501,
   headers: { 'Content-Type': 'text/plain' },
   body: message || 'Incorrect id',
 });
 
-const dbExecute = (db, fn) => db.then(fn).finally(() => db.close());
+const dbExecute = (db, fn) => db.then(fn).finally(() => db.close())
 
 function dbConnectAndExecute(dbUrl, fn) {
-  return dbExecute(mongoose.connect(dbUrl, { useMongoClient: true }), fn);
+  return dbExecute(mongoose.connect(dbUrl, { useMongoClient: true }), fn)
 }
 
 module.exports.user = (event, context, callback) => {
   if (!validator.isAlphanumeric(event.pathParameters.id)) {
-    callback(null, createErrorResponse(400, 'Incorrect id'));
+    callback(null, createErrorResponse(400, 'Incorrect id'))
     return;
   }
 
@@ -35,7 +35,7 @@ module.exports.user = (event, context, callback) => {
 
 
 module.exports.createUser = (event, context, callback) => {
-  const data = JSON.parse(event.body);
+  const data = JSON.parse(event.body)
 
   const user = new UserModel({
     name: data.name,
@@ -46,8 +46,8 @@ module.exports.createUser = (event, context, callback) => {
   });
 
   if (user.validateSync()) {
-    callback(null, createErrorResponse(400, 'Incorrect user data'));
-    return;
+    callback(null, createErrorResponse(400, 'Incorrect user data'))
+    return
   }
 
   dbConnectAndExecute(mongoString, () => (
@@ -58,13 +58,13 @@ module.exports.createUser = (event, context, callback) => {
         body: JSON.stringify({ id: user.id }),
       }))
       .catch(err => callback(null, createErrorResponse(err.statusCode, err.message)))
-  ));
-};
+  ))
+}
 
 module.exports.deleteUser = (event, context, callback) => {
   if (!validator.isAlphanumeric(event.pathParameters.id)) {
-    callback(null, createErrorResponse(400, 'Incorrect id'));
-    return;
+    callback(null, createErrorResponse(400, 'Incorrect id'))
+    return
   }
 
   dbConnectAndExecute(mongoString, () => (
@@ -72,12 +72,12 @@ module.exports.deleteUser = (event, context, callback) => {
       .remove({ _id: event.pathParameters.id })
       .then(() => callback(null, { statusCode: 200, body: JSON.stringify('Ok') }))
       .catch(err => callback(null, createErrorResponse(err.statusCode, err.message)))
-  ));
-};
+  ))
+}
 
 module.exports.updateUser = (event, context, callback) => {
-  const data = JSON.parse(event.body);
-  const id = event.pathParameters.id;
+  const data = JSON.parse(event.body)
+  const id = event.pathParameters.id
 
   if (!validator.isAlphanumeric(id)) {
     callback(null, createErrorResponse(400, 'Incorrect id'));
@@ -102,5 +102,5 @@ module.exports.updateUser = (event, context, callback) => {
     UserModel.findByIdAndUpdate(id, user)
       .then(() => callback(null, { statusCode: 200, body: JSON.stringify('Ok') }))
       .catch(err => callback(err, createErrorResponse(err.statusCode, err.message)))
-  ));
-};
+  ))
+}

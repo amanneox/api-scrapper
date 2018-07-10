@@ -21,7 +21,7 @@ const model = mongoose.model('User', {
     },
   },
   birth: {
-    type: Date,
+    type: String,
     required: true,
   },
   city: {

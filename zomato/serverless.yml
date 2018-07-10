@@ -1,0 +1,105 @@
+service: api-scrapper-zomato-service
+app: api-scrapper
+tenant: amanneox
+provider:
+  name: aws
+  stage: dev
+  region: ap-south-1
+  runtime: nodejs8.10
+
+functions:
+  zomato-getCategories:
+    handler: handlers/extract.getCategories
+    events:
+      - http:
+          path: zomato/getCategories
+          method: get
+          cors: true
+
+  zomato-getCity:
+    handler: handlers/extract.getCity
+    events:
+      - http:
+          path: zomato/getCity
+          method: post
+          cors: true
+
+  zomato-getCuisines:
+    handler: handlers/extract.getCuisines
+    events:
+      - http:
+          path: zomato/getCuisines
+          method: post
+          cors: true
+
+  zomato-getGeocode:
+    handler: handlers/extract.getGeocode
+    events:
+      - http:
+          path: zomato/getGeocode
+          method: post
+          cors: true
+
+  zomato-getLocations:
+    handler: handlers/extract.getLocations
+    events:
+      - http:
+          path: zomato/getLocations
+          method: post
+          cors: true
+
+  zomato-getLocationDetails:
+    handler: handlers/extract.getLocationDetails
+    events:
+      - http:
+          path: zomato/getLocationDetails
+          method: post
+          cors: true
+
+  zomato-zomatoSearch:
+    handler: handlers/extract.zomatoSearch
+    events:
+      - http:
+          path: zomato/zomatoSearch
+          method: post
+          cors: true
+
+  zomato-dailyMenu:
+    handler: handlers/extract.getDailyMenu
+    events:
+      - http:
+          path: zomato/getDailyMenu
+          method: post
+          cors: true
+
+  zomato-Restaurant:
+    handler: handlers/extract.getRestaurant
+    events:
+      - http:
+          path: zomato/getRestaurant
+          method: post
+          cors: true
+
+  zomato-getReviews:
+    handler: handlers/extract.getReviews
+    events:
+      - http:
+          path: zomato/getReviews
+          method: post
+          cors: true
+
+  zomato-establishments:
+    handler: handlers/extract.getEstablishments
+    events:
+      - http:
+          path: zomato/getEstablishments
+          method: post
+          cors: true
+
+    zomato-collections:
+      handler: handlers/extract.getCollections
+      events:
+        - http:
+            path: zomato/getCollections
+            method: post
+            cors: true
