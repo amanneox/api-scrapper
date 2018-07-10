@@ -1,8 +1,11 @@
+const path = require('path')
+
 const zomato = require('../utils/zomato')
+
 const Promise = require('bluebird');
 const validator = require('validator');
 require('dotenv').config()
-const credentials = process.env.ZOMATO_API
+const credentials = process.env.ZOMATO_API // Replace With Your Zomato Key
 const client = zomato.createClient({
   userKey: credentials,
 })
