@@ -6,7 +6,6 @@ require('dotenv').config()
 mongoose.Promise = Promise;
 
 const mongoString = process.env.MONGO_URI // Change this to your own MONGO_URI
-console.log(mongoString)
 const createErrorResponse = (statusCode, message) => ({
   statusCode: statusCode || 501,
   headers: { 'Content-Type': 'text/plain' },

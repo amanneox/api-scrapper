@@ -1,19 +1,25 @@
 const path = require('path')
-
+const mongoose = require('mongoose')
+const Promise = require('bluebird')
 const zomato = require('../utils/zomato')
-
-const Promise = require('bluebird');
-const validator = require('validator');
+const validator = require('validator')
 require('dotenv').config()
+const mongoString = process.env.MONGO_URI
 const credentials = process.env.ZOMATO_API // Replace With Your Zomato Key
 const client = zomato.createClient({
   userKey: credentials,
 })
+mongoose.Promise = Promise
 const createErrorResponse = (statusCode, message) => ({
   statusCode: statusCode || 501,
   headers: { 'Content-Type': 'text/plain' },
   body: message || 'Incorrect id',
 });
+const dbExecute = (db, fn) => db.then(fn).finally(() => db.close());
+
+function dbConnectAndExecute(dbUrl, fn) {
+  return dbExecute(mongoose.connect(dbUrl, { useMongoClient: true }), fn);
+}
 
 module.exports.getCategories = (event, context, callback) => {
   client.getCategories(null, function(err, result){

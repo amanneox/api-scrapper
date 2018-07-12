@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const Promise = require('bluebird');
 const validator = require('validator');
 const UserModel = require('./model/User.js');
-
+require('dotenv').config()
 mongoose.Promise = Promise;
 
-const mongoString = 'mongodb://amanneox:amanneox@scrapper-dev-shard-00-00-i8ugf.mongodb.net:27017,scrapper-dev-shard-00-01-i8ugf.mongodb.net:27017,scrapper-dev-shard-00-02-i8ugf.mongodb.net:27017/test?ssl=true&replicaSet=scrapper-dev-shard-0&authSource=admin&retryWrites=true';
+const mongoString = process.env.MONGO_URI
 const createErrorResponse = (statusCode, message) => ({
   statusCode: statusCode || 501,
   headers: { 'Content-Type': 'text/plain' },

@@ -7,6 +7,7 @@
     "bluebird": "^3.5.0",
     "dotenv": "^6.0.0",
     "mongoose": "^4.9.6",
+    "oauth": "^0.9.15",
     "validator": "^7.0.0"
   },
   "author": "amanneox adhikari <amanadhikari2@gmail.com>",
