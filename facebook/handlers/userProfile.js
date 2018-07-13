@@ -20,5 +20,5 @@ function dbConnectAndExecute(dbUrl, fn) {
   return dbExecute(mongoose.connect(dbUrl, { useMongoClient: true }), fn)
 }
 module.exports.userData = (event, context, callback) => {
-  
+//  const id = event.pathParameters.access_token
 }
