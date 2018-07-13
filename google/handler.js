@@ -5,7 +5,7 @@ const UserModel = require('./model/User.js');
 
 mongoose.Promise = Promise;
 
-const mongoString = ''; // MongoDB Url
+const mongoString = process.env.MONGO_URI // MongoDB Url
 
 const createErrorResponse = (statusCode, message) => ({
   statusCode: statusCode || 501,
