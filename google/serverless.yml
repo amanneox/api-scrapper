@@ -39,3 +39,11 @@ functions:
           path: user/{id}
           method: get
           cors: true
+
+  nearbySearch:
+    handler: handler.createUser
+    events:
+      - http:
+          path: google/nearbySearch
+          method: getCall
+          cors: true
