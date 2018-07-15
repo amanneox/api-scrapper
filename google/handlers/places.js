@@ -1,14 +1,18 @@
 const mongoose = require('mongoose')
 const Promise = require('bluebird')
 const validator = require('validator')
+const GooglePlaces = require('node-googleplaces')
 require('dotenv').config()
-const googlePlaces = require('node-googleplaces')
 const mongoString = process.env.MONGO_URI // MONGO MONGO_URI
 const googleKey = process.env.GOOGLE_API   // GOOGLE KEY
 
-const mongoString = process;
+mongoose.Promise = Promise;
 
-const places = new googlePlaces(googleKey)
+const places = new GooglePlaces(googleKey)
+const params = {
+  location: '49.250964,-123.102192',
+  radius: 1000
+};
 
 const createErrorResponse = (statusCode, message) => ({
   statusCode: statusCode || 501,
@@ -22,13 +26,13 @@ function dbConnectAndExecute(dbUrl, fn) {
   return dbExecute(mongoose.connect(dbUrl, { useMongoClient: true }), fn);
 }
 
-const params = {
-  location: '49.250964,-123.102192',
-  radius: 1000
-}
 
 module.exports.nearbySearch = (event, context, callback) => {
+  const query = {
+    ...params
+  }
   places.nearbySearch(query).then((res) => {
     console.log(res.body)
+    callback(null, { statusCode: 200, body: res })
   })
 }

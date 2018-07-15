@@ -41,9 +41,9 @@ functions:
           cors: true
 
   nearbySearch:
-    handler: handler.createUser
+    handler: handlers/places.nearbySearch
     events:
       - http:
           path: google/nearbySearch
-          method: getCall
+          method: get
           cors: true
