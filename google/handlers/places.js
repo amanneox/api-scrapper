@@ -31,8 +31,14 @@ module.exports.nearbySearch = (event, context, callback) => {
   const query = {
     ...params
   }
-  places.nearbySearch(query).then((res) => {
-    console.log(res.body)
-    callback(null, { statusCode: 200, body: res })
-  })
+  places.nearbySearch(query, (err, res) => {
+  console.log(res.body)
+  if (err) {
+    callback(null, { statusCode: 200, body: err })
+  }
+  else {
+      callback(null, { statusCode: 200, body: res })
+  }
+})
+
 }
